@@ -16,6 +16,7 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
     "nodemon": "^1.12.1",
     "react-hot-loader": "^3.0.0",
     "webpack": "^3.7.1",
@@ -23,8 +24,11 @@
     "webpack-hot-middleware": "^2.19.1"
   },
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios": "^0.12.0",
+    "body-parser": "^1.18.2",
+    "classnames": "^2.2.5",
     "express": "^4.16.2",
+    "lodash": "^4.17.4",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
@@ -32,6 +36,7 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "validator": "^9.0.0"
   }
 }
