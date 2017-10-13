@@ -1,10 +1,17 @@
 import React from 'react';
-import Greet from './Greet';
+import Nav from './Nav';
+import Greetings from './Greetings';
+import Login from './login/Login';
+import { BrowserRouter as Router, Route, browserHistory, Link, Redirect, withRouter } from 'react-router-dom';
 
 class App extends React.Component {
     render() {
         return (
-            <Greet />
+            <div className="container">
+                <Nav />
+                <Route exact path='/' component={Greetings} />
+                <Route path='/login' component={Login} />
+            </div>
         );
     }
 }

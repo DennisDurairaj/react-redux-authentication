@@ -1,5 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './components/App';
+import { BrowserRouter as Router, Route, browserHistory, Link, Redirect, withRouter } from 'react-router-dom';
 
-render(<App />, document.getElementById('app'));
+import App from './components/App';
+// import SignupPage from './components/signup/SignupPage';
+
+render((
+  <Router>
+    <App />
+  </Router>
+), document.getElementById('app'));
