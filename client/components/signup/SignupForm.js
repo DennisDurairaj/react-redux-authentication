@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import validateInput from '../../../server/shared/validations/signup';
 import TextFieldGroup from '../common/TextFieldGroup';
+import { Redirect } from 'react-router-dom';
 
 export default class SignupForm extends Component {
     constructor(props) {
@@ -12,7 +13,8 @@ export default class SignupForm extends Component {
             password: '',
             passwordConfirm: '',
             errors: {},
-            isLoading: false
+            isLoading: false,
+            success: false
         }
     }
 
@@ -37,7 +39,9 @@ export default class SignupForm extends Component {
         if (this.isValid()) {
             this.setState({ errors: {}, isLoading: true });
             this.props.userSignupRequest(this.state).then(
-                () => {},
+                () => {
+                    this.context.router.history.push('/');
+                },
                 ({ data }) => {
                     this.setState({ errors: data, isLoading: false })
                 }
@@ -46,7 +50,7 @@ export default class SignupForm extends Component {
     }
 
   render() {
-      const { errors } = this.state;
+    const { errors } = this.state;
     return (
       <div>
         <form onSubmit={this.onSubmit}>
@@ -55,7 +59,26 @@ export default class SignupForm extends Component {
                 name="username" 
                 type="text" value={this.state.username} 
                 onChange={this.onInput} 
-                error={errors.username} label="Username" />
+                error={errors.username} label="Username" 
+            />
+            <TextFieldGroup 
+                name="email" 
+                type="text" value={this.state.email} 
+                onChange={this.onInput} 
+                error={errors.email} label="Email" 
+            />
+            <TextFieldGroup 
+                name="password" 
+                type="password" value={this.state.password} 
+                onChange={this.onInput} 
+                error={errors.password} label="Password" 
+            />
+            <TextFieldGroup 
+                name="passwordConfirm" 
+                type="password" value={this.state.passwordConfirm} 
+                onChange={this.onInput} 
+                error={errors.passwordConfirm} label="Confirm Password" 
+            />
             <div className="form-group">
                 <button disabled={this.state.isLoading} className="btn btn-primary btn-lg">
                     Sign Up
@@ -65,6 +88,10 @@ export default class SignupForm extends Component {
       </div>
     )
   }
+}
+
+SignupForm.contextTypes = {
+    router: PropTypes.object.isRequired
 }
 
 SignupForm.PropTypes = {
