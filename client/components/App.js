@@ -1,7 +1,11 @@
 import React from 'react';
+import Greet from './Greet';
 
-export default () => {
-    return (
-        <h1>Hello from React</h1>
-    );
+class App extends React.Component {
+    render() {
+        return (
+            <Greet />
+        );
+    }
 }
+export default App;
