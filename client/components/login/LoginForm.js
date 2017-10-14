@@ -34,7 +34,7 @@ export default class LoginForm extends Component {
             this.props.login(this.state).then(
                 (res) => this.context.router.history.push('/'),
                 (err) => {
-                    this.setState({ errors: err.data, isLoading: false });
+                    this.setState({ errors: err.data.errors, isLoading: false });
                 } 
             )
         }
@@ -50,6 +50,7 @@ export default class LoginForm extends Component {
       <div>
         <form onSubmit={this.onSubmit}>
             <h1>Login</h1>
+            { errors.form && <div className="alert alert-danger">{errors.form}</div> }
             <TextFieldGroup 
                 label="Username / Email"
                 value={username}
